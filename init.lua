@@ -184,16 +184,11 @@ vim.api.nvim_create_autocmd('InsertLeave', {
 vim.g.loaded_netrwPlugin = 1
 vim.g.loaded_netrw = 1
 vim.api.nvim_create_autocmd('VimEnter', {
-  command = 'set nornu nonu | Neotree close',
-})
-vim.api.nvim_create_autocmd('VimEnter', {
   command = 'wincmd p',
 })
 vim.api.nvim_create_autocmd('BufEnter', {
   command = 'set rnu nu',
 })
-vim.keymap.set('n', '<C-b>', '<cmd>Neotree toggle<CR>', { silent = true })
-
 --vim.cmd 'source ~/.config/nvim/vimscripts/plugins/fugitive.vim'
 
 -- Preview substitutions live, as you type!
@@ -252,6 +247,9 @@ vim.keymap.set('n', '<Tab>', '>>', tab_opts)
 vim.keymap.set('n', '<S-Tab>', '<<', tab_opts)
 vim.keymap.set('v', '<Tab>', '>gv', tab_opts)
 vim.keymap.set('v', '<S-Tab>', '<gv', tab_opts)
+
+-- set tags=./tags;,tags
+vim.opt.tags:append '~/.ctags'
 
 -- Highlight when yanking (copying) text
 --  Try it with `yap` in normal mode
@@ -497,6 +495,16 @@ require('lazy').setup({
         },
       }
 
+      perlnavigator = {
+        settings = {
+          perlnavigator = {
+            perlPath = '~/perl5/perlbrew/perls/perl-5.24.1/bin/perl',
+            perltidyPath = '~/perl5/perlbrew/perls/perl-5.24.1/bin/perltidy',
+            perlCriticPath = '~/perl5/perlbrew/perls/perl-5.24.1/bin/perlcritic',
+          },
+        },
+      }
+
       -- Ensure the servers and tools above are installed
       --  To check the current status of installed tools and/or manually install
       --  other tools, you can run
@@ -728,3 +736,13 @@ require('lazy').setup({
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
+
+-- Indentatio
+vim.cmd 'filetype plugin indent on'
+vim.o.expandtab = true
+vim.o.shiftwidth = 2
+vim.o.tabstop = 2
+vim.o.softtabstop = 2
+vim.o.smartindent = true
+vim.o.autoindent = true
+vim.o.smarttab = true
