@@ -3,7 +3,6 @@ return {
     'echasnovski/mini.nvim',
     version = false,
     config = function()
-      require('mini.comment').setup()
       require('mini.indentscope').setup {
         draw = {
           animation = function()
@@ -25,8 +24,11 @@ return {
         },
       }
       require('mini.surround').setup()
-      --require('mini.tabline').setup()
       require('mini.visits').setup()
     end,
+  },
+  {
+    'm4xshen/smartcolumn.nvim',
+    opts = {},
   },
 }
